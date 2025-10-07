@@ -99,6 +99,13 @@ const server = http.createServer((req, res) => {
 });
 //http://127.0.0.1:8000/
 //local host : port(address)
-server.listen(8000, "127.0.0.1", () => {
-  console.log("Listening to request on port 8000");
+/* When you deploy to a hosting provider:
+
+They don’t allow you to pick your own port.
+
+They give you one automatically through an environment variable:
+process.env.PORT. */
+const PORT = process.env.PORT || 8000;
+server.listen(PORT, "127.0.0.1", () => {
+  console.log(`Listening to request on port ${PORT}`);
 }); //standaard ip address
